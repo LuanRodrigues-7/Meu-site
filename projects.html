@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculadora web</title>
+  <style>
+    body {
+      flex-direction: column;
+      background: linear-gradient(135deg, #ffffff, #727272);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+    }
+
+    .calculadora {
+      background: #2c2a2a;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      width: 260px;
+    }
+
+    .display {
+      background: #000000;
+      color: rgb(255, 255, 255);
+      font-size: 2em;
+      padding: 15px;
+      border-radius: 10px;
+      text-align: right;
+      margin-bottom: 15px;
+      overflow-x: auto;
+    }
+
+    .botoes {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    button {
+      padding: 15px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      opacity: 0.8;
+    }
+
+    .numero {
+      background: #000000;
+      color: #ffffff;
+    }
+
+    .operador {
+      background: #000000;
+      color: #fff;
+    }
+
+    .igual {
+      background: #000000;
+      color: #fff;
+      grid-column: span 2;
+    }
+
+    .limpar {
+      background: #99000f;
+      color: #fff;
+      grid-column: span 2;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 class="titulo">Luan Assunção Rodrigues
+    <h2>
+      Calculadora Web
+    </h2>
+  </h1>
+
+  <div class="calculadora">
+    <div class="display" id="display">0</div>
+
+    <div class="botoes">
+      <button class="limpar" onclick="limpar()">C</button>
+      <button class="operador" onclick="adicionar('/')">/</button>
+      <button class="operador" onclick="adicionar('*')">*</button>
+
+      <button class="numero" onclick="adicionar('7')">7</button>
+      <button class="numero" onclick="adicionar('8')">8</button>
+      <button class="numero" onclick="adicionar('9')">9</button>
+      <button class="operador" onclick="adicionar('-')">-</button>
+
+      <button class="numero" onclick="adicionar('4')">4</button>
+      <button class="numero" onclick="adicionar('5')">5</button>
+      <button class="numero" onclick="adicionar('6')">6</button>
+      <button class="operador" onclick="adicionar('+')">+</button>
+
+      <button class="numero" onclick="adicionar('1')">1</button>
+      <button class="numero" onclick="adicionar('2')">2</button>
+      <button class="numero" onclick="adicionar('3')">3</button>
+
+      <button class="numero" onclick="adicionar('0')">0</button>
+      <button class="numero" onclick="adicionar('.')">.</button>
+      <button class="igual" onclick="calcular()">=</button>
+    </div>
+  </div>
+
+  <script>
+    let display = document.getElementById("display");
+
+    function adicionar(valor) {
+      if (display.innerText === "0") {
+        display.innerText = valor;
+      } else {
+        display.innerText += valor;
+      }
+    }
+
+    function limpar() {
+      display.innerText = "0";
+    }
+
+    function calcular() {
+      try {
+        display.innerText = eval(display.innerText);
+      } catch {
+        display.innerText = "Erro";
+      }
+    }
+  </script>
+
+</body>
+</html>
